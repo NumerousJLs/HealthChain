@@ -1,100 +1,55 @@
-<div align="center">
-  <img src="public/logo.png">
-</div>
-
-
-
-![Preview](preview.png)
-
-
 # HealthChain
 
-## Overview
-HealthChain is your dedicated AI personal trainer, powered by Hume.ai emotional intelligence technology. It adapts to your feelings and motivations, providing personalized fitness and nutrition plans with the help of Google Gemini's parsing and structured data features. Unlike typical AI trainers that offer generic advice, HealthChain understands when you're unmotivated or stressed, offering timely encouragement to keep you on track.
+HealthChain is a voice-based nutrition assistant built at Cal Hacks 11.0 and later selected for the Hume AI Startup Program. It turns meal conversations into structured nutrition records, tracks calorie and protein goals, and provides meal-history views through a Next.js frontend and Flask backend.
 
-## **Authors and Acknowledgment**
+![HealthChain preview](preview.png)
 
-HealthChain was created by **[Addy](https://github.com/addychen2), [Derek](https://github.com/dwstan), [Joshua](https://github.com/NumerousJLs), and [Steven](https://github.com/sanityl0st),**.
+## Core Flow
 
+1. A user discusses a meal through Hume's empathic voice interface.
+2. The backend uses Gemini to parse meals and nutrition targets into structured data.
+3. Flask and SQLite persist meal records, goals, and history.
+4. The Next.js interface displays progress and prior meals.
 
-## Project Local Run Instructions
-```
-npm install
-npm run dev
-```
+The repository also includes exploratory ChromaDB and Gemini work for healthier-meal recommendations. That prototype is separate from the primary meal-tracking flow.
 
-## .env Setup
-Make sure to create a .env file and fill it with the stuff from discord
-```
-HUME_API_KEY=
-HUME_SECRET_KEY=
-NEXT_PUBLIC_HUME_CONFIG_ID=
+## Technology
 
-GEMINI_API_KEY=
-```
+- Next.js, React, TypeScript, and Tailwind CSS
+- Hume EVI for voice interaction
+- Flask, SQLAlchemy, and SQLite
+- Gemini for meal and target parsing
 
-## Project deployment
+## Run Locally
 
-Click the button below to deploy this example project with Vercel:
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fhumeai%2Fhume-evi-next-js-starter&env=HUME_API_KEY,HUME_SECRET_KEY)
-
-Below are the steps to completing deployment:
-
-1. Create a Git Repository for your project.
-2. Provide the required environment variables. To get your API key and Client Secret key, log into the portal and visit the [API keys page](https://beta.hume.ai/settings/keys).
-
-## Deployment Bug Commands
-
-```
-# if node version if out of date
-nvm install node
-
-corepack enable pnpm     
-
-pnpm install
-# or
-pnpm install --no-frozen-lockfile
-```
-
-## Support
-
-If you have questions, require assistance, or wish to engage in discussions pertaining to this starter template, [please reach out to us on Discord](https://link.hume.ai/discord).
-
-
-## Setting Up the Backend
-
-To set up the backend, follow these steps:
-
-1. **Create a Virtual Environment**:
-  ```bash
-  python3 -m venv venv
-  ```
-
-2. **Activate the Virtual Environment**:
-  - On macOS and Linux:
-    ```bash
-    source venv/bin/activate
-    ```
-  - On Windows:
-    ```bash
-    .\venv\Scripts\activate
-    ```
-
-3. **Navigate to the Backend Source Directory**:
-  ```bash
-  cd backend/src
-  ```
-
-4. **Install dependencies**
+Copy `.env.example` to `.env` and provide the required Hume and Gemini credentials.
 
 ```bash
-  pip install -r requirements.txt
-  ```
+cp .env.example .env
+```
 
-5. **Run the Backend Application**:
-  ```bash
-  python main.py
-  ```
+### Frontend
 
-This will start the backend server, and it should be running and ready to handle requests.
+```bash
+corepack enable
+pnpm install
+pnpm dev
+```
+
+### Backend
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r backend/src/requirements.txt
+cd backend/src
+python main.py
+```
+
+## Team
+
+HealthChain was created by [Addy](https://github.com/addychen2), [Derek](https://github.com/dwstan), [Joshua](https://github.com/NumerousJLs), and [Steven](https://github.com/sanityl0st).
+
+## Project Status
+
+HealthChain is a hackathon prototype. The repository documents local setup and experimentation, not a production deployment or clinical nutrition service.
